@@ -46,14 +46,14 @@ Ensure the following are installed on your system:
    git clone https://github.com/KrisSolanki/Todo-list_server.git
    cd Todo-list_server
 
-2. Insall Dependencies:
+2. Install Dependencies:
   - check if node is installed or not
    ```bash
-   npm node -v
+     npm node -v
    ```
   - Dependencies
     ```bash
-    npm install express cors dotenv mongoose nodemon
+      npm install express cors dotenv mongoose nodemon
     ```
 3. Modify package.json
   - Ensure package.json includes the following configurations:
