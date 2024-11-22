@@ -6,7 +6,7 @@ import router from './route.js';
 const app = express();
 dotenv.config({path: "./config/config.env"});
 
-// const PORT = 3000;
+
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port${process.env.PORT}`);
 });
