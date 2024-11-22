@@ -12,7 +12,7 @@
 
 ### Prerequisites
 Ensure the following are installed on your system:
-- **Node.js**:[Download Node.js](https://nodejs.org)
+- **Node.js**: [Download Node.js](https://nodejs.org)
 - **Database**: MongoDB
 - **Git**: For version control
 
