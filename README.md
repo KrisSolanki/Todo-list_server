@@ -51,7 +51,7 @@ Ensure the following are installed on your system:
   - check if node is installed or not
    ```bash
    npm node -v
-```
+   ```
   - Dependencies
     ```bash
     npm install express cors dotenv mongoose nodemon
