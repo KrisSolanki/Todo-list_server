@@ -28,8 +28,7 @@ Ensure the following are installed on your system:
   - Mark tasks as complete.
   - Edit tasks
   - Delete tasks
-  - Due dates for tasks
-  - Categorize tasks
+  
 - **Data Persistence**
   -Tasks are stored in a database(MongoDB).
 - **Validation**
