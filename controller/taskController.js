@@ -84,7 +84,6 @@ export const updateTask = async (req, res) => {
     try {
         const taskId = req.params.id;
         const { title, description, dueDate, isCompleted, category , updatedAt } = req.body;
-
         const existingTask = await Task.findById(taskId);
         
         // Validation for the task that are already marked complete 
@@ -113,7 +112,7 @@ export const updateTask = async (req, res) => {
             taskId,
             { title, description, dueDate, isCompleted, category , updatedAt: new Date() },
             { new: true, runValidators: true }
-        )
+        ).populate("category")
         return res.status(200).json({ message: 'Task updated successfully.', task })
     } catch (error) {
         console.error("Error occured while updating task", error.message)
@@ -133,6 +132,30 @@ export const getCategories = async (req,res) => {
     }catch(error){
         console.error("Error occured while retrieving categories:",error.message)
         res.status(500).json({message:"Error occured while retrieving categories"})
+    }
+}
+
+// this function groups task on the basis of category id
+export const getCategorizedTask = async (req,res) => {
+    try{ const { id } = req.params;
+    const category = await Category.findById(id)
+    if(!category){
+        return res.status(404).json({message:"Category not found"})
+    }
+    const task = await Task.find({category : category._id}).populate('category');
+        if(!task.length){
+           return res.status(404).json({message:"No task found"})
+        }
+
+    return res.status(200).json({
+    message:"Task retrieved successfully",
+    task,
+    success:true
+     })
+
+    }catch(error){
+        console.error("Error retrieving categorized task",error.message);
+        return res.status(500).json({message:"Error retrieving categorized task"})
     }
 }
 
@@ -166,3 +189,4 @@ export const deleteCategory = async (req,res) => {
         return res.status(500).json({message:"Error occcured while deleting category"})
     }
 } 
+
